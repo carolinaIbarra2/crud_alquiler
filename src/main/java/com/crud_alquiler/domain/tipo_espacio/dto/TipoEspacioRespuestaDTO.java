@@ -1,6 +1,6 @@
-package com.crud_alquiler.domain.dto;
+package com.crud_alquiler.domain.tipo_espacio.dto;
 
-import com.crud_alquiler.domain.TipoEspacio;
+import com.crud_alquiler.domain.tipo_espacio.TipoEspacio;
 
 public record TipoEspacioRespuestaDTO(
     Long id,
