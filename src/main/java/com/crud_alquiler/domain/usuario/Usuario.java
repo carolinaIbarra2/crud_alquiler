@@ -1,6 +1,7 @@
 package com.crud_alquiler.domain.usuario;
 
 import com.crud_alquiler.domain.usuario.dto.UsuarioInsertDTO;
+import com.crud_alquiler.domain.usuario.dto.UsuarioUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -39,5 +40,30 @@ public class Usuario {
        this.contrasenia = usuarioInsertDTO.contrasenia();;
        this.rol = usuarioInsertDTO.rol();
    }
+
+    public void updateUsuario(UsuarioUpdateDTO usuarioUpdateDTO){
+       if (usuarioUpdateDTO.nombre() != null){
+           this.nombre = usuarioUpdateDTO.nombre();
+       }
+       if (usuarioUpdateDTO.apellido_paterno() != null){
+           this.apellido_paterno = usuarioUpdateDTO.apellido_paterno();
+       }
+       if (usuarioUpdateDTO.apellido_materno() != null){
+           this.apellido_materno = usuarioUpdateDTO.apellido_materno();
+       }
+       if (usuarioUpdateDTO.cedula() != null){
+           this.cedula = usuarioUpdateDTO.cedula();
+       }
+       if (usuarioUpdateDTO.login() != null){
+           this.login = usuarioUpdateDTO.login();
+       }
+       if (usuarioUpdateDTO.contrasenia() != null){
+           this.contrasenia = usuarioUpdateDTO.contrasenia();
+       }
+       if (usuarioUpdateDTO.rol() != null){
+           this.rol = usuarioUpdateDTO.rol();
+       }
+    }
+   
 
 }

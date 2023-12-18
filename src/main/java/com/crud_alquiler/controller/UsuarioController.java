@@ -3,6 +3,7 @@ package com.crud_alquiler.controller;
 import com.crud_alquiler.domain.usuario.UsuarioService;
 import com.crud_alquiler.domain.usuario.dto.UsuarioInsertDTO;
 import com.crud_alquiler.domain.usuario.dto.UsuarioRespuestaDTO;
+import com.crud_alquiler.domain.usuario.dto.UsuarioUpdateDTO;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -68,6 +69,19 @@ public class UsuarioController {
         UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioService.insertUsuario(usuarioInsertDTO);
         URI url = uriComponentsBuilder.path("/usuario/{id}").buildAndExpand(usuarioRespuestaDTO.id()).toUri();
         return ResponseEntity.created(url).body(usuarioRespuestaDTO);
+    }
+
+
+    /* este método controlador maneja las solicitudes PUT para actualizar información de usuario, validando
+    el cuerpo de la solicitud con respecto a un objeto UsuarioUpdateDTO, y devuelve una respuesta con la
+    información actualizada encapsulada en un objeto UsuarioRespuestaDTO.*/
+    @PutMapping
+    @Transactional
+    public ResponseEntity<UsuarioRespuestaDTO> updateUsuario(
+            @Valid @RequestBody UsuarioUpdateDTO usuarioUpdateDTO
+            ){
+        UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioService.updateUsuario(usuarioUpdateDTO);
+        return ResponseEntity.ok(usuarioRespuestaDTO);
     }
 
 

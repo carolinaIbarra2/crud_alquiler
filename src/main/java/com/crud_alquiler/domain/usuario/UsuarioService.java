@@ -2,6 +2,7 @@ package com.crud_alquiler.domain.usuario;
 
 import com.crud_alquiler.domain.usuario.dto.UsuarioInsertDTO;
 import com.crud_alquiler.domain.usuario.dto.UsuarioRespuestaDTO;
+import com.crud_alquiler.domain.usuario.dto.UsuarioUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,13 @@ public class UsuarioService {
     }
 
     /* este método recupera un usuario utilizando su id, desde una base de datos a través de usuarioRepository,
-     y luego lo convierte en un UsuarioRespuestaDTO para devolverlo como respuesta.*/
+     y luego lo convierte en un UsuarioRespuestaDTO para devolverlo como respuesta.Busca un dato*/
     public UsuarioRespuestaDTO getUsuario(Long id){
         Usuario usuario = usuarioRepository.getReferenceById(id);
         return new UsuarioRespuestaDTO(usuario);
     }
 
-    //Este metodo lista
+    //Este metodo lista. Lista todos los datos
     public Page<UsuarioRespuestaDTO> findByUsuario(Pageable pageable){
         return usuarioRepository.findAll(pageable).map(UsuarioRespuestaDTO::new);
     }
@@ -35,6 +36,12 @@ public class UsuarioService {
     public UsuarioRespuestaDTO insertUsuario(UsuarioInsertDTO usuarioInsertDTO){
         Usuario usuario = usuarioRepository.save(new Usuario(usuarioInsertDTO));
         return new UsuarioRespuestaDTO((usuario));
+    }
+
+    public UsuarioRespuestaDTO updateUsuario(UsuarioUpdateDTO usuarioUpdateDTO){
+        Usuario usuario = usuarioRepository.getReferenceById(usuarioUpdateDTO.id());
+        usuario.updateUsuario(usuarioUpdateDTO);
+        return new UsuarioRespuestaDTO(usuario);
     }
 
 }
