@@ -1,7 +1,7 @@
 package com.crud_alquiler.domain.tipo_espacio;
 
-import com.crud_alquiler.domain.tipo_espacio.dto.TipoEspacioInsertDTO;
 import com.crud_alquiler.domain.tipo_espacio.dto.TipoEspacioRespuestaDTO;
+import com.crud_alquiler.domain.tipo_espacio.dto.TipoEspacioInsertDTO;
 import com.crud_alquiler.domain.tipo_espacio.dto.TipoEspacioUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
