@@ -44,4 +44,9 @@ public class UsuarioService {
         return new UsuarioRespuestaDTO(usuario);
     }
 
+    public void delectUsuario(Long id){
+        Usuario usuario = usuarioRepository.getReferenceById(id);
+        usuarioRepository.deleteById(usuario.getId());
+    }
+
 }

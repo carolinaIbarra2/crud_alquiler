@@ -35,4 +35,9 @@ public class TipoEspacioService {
         tipoEspacio.updateTipoEspacio(tipoEspacioUpdateDTO);
         return new TipoEspacioRespuestaDTO(tipoEspacio);
     }
+
+    public void deleteTipoEspacio(Long id){
+        TipoEspacio tipoEspacio = tipoEspacioRepository.getReferenceById(id);
+        tipoEspacioRepository.deleteById(tipoEspacio.getId());
+    }
 }

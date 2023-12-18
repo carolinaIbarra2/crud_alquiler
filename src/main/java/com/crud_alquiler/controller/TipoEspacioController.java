@@ -56,4 +56,11 @@ public class TipoEspacioController {
         return ResponseEntity.ok(respuestaDTO);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> deleteTipoEspacio(@PathVariable Long id){
+        tipoEspacioService.deleteTipoEspacio(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

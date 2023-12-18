@@ -85,4 +85,16 @@ public class UsuarioController {
     }
 
 
+    /*Cuando se utiliza ResponseEntity<?> como tipo de retorno de un controlador en Spring, se está indicando
+     que el método puede devolver cualquier tipo de objeto en el cuerpo de la respuesta. Por ejemplo,
+     podría ser un objeto JSON, una cadena de texto, un objeto personalizado, o incluso null en ciertos casos.*/
+    @DeleteMapping("/{id}")  /*este método en el controlador manejará las solicitudes HTTP DELETE en
+    una URL específica que espera un parámetro id en la ruta.*/
+    @Transactional
+    public ResponseEntity<?> delectUsuario(@PathVariable Long id){
+        usuarioService.delectUsuario(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
