@@ -53,4 +53,11 @@ public class CostoAlquilerController {
         CostoAlquilerRespuestaDTO costoAlquilerRespuestaDTO = costoAlquilerService.updateCostoAlquiler(costoAlquilerUpdateDTO);
         return ResponseEntity.ok(costoAlquilerRespuestaDTO);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> deleteCostoAlquiler(@PathVariable Long id){
+        costoAlquilerService.delectCostoAlquiler(id);
+        return ResponseEntity.noContent().build();
+    }
 }
