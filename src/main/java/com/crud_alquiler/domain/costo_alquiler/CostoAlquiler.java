@@ -44,13 +44,13 @@ public class CostoAlquiler {
         if (espacioFisico != null){
             this.espacioFisico = espacioFisico;
         }
-        if (costo_dia != 0){
+        if (costoAlquilerUpdateDTO.costo_dia() != 0){
             this.costo_dia = costoAlquilerUpdateDTO.costo_dia();
         }
-        if (fecha_inicial != null){
+        if (costoAlquilerUpdateDTO.fecha_inicial() != null){
             this.fecha_inicial = costoAlquilerUpdateDTO.fecha_inicial();
         }
-        if (fecha_final != null){
+        if (costoAlquilerUpdateDTO.fecha_final() != null){
             this.fecha_final = costoAlquilerUpdateDTO.fecha_final();
         }
     }
