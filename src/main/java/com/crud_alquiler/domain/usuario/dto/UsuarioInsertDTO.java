@@ -13,10 +13,10 @@ public record UsuarioInsertDTO(
         String nombre,
         @NotBlank
         @Size(min=2, max = 50)
-        String apellido_paterno,
+        String apellidoPaterno,
         @NotBlank
         @Size(min = 2, max = 50)
-        String apellido_materno,
+        String apellidoMaterno,
 
         @NotBlank
         @Size(max = 15)

@@ -10,9 +10,9 @@ public record ReservaUpdateDTO(
         Long id,
         Long espacioFisicoId,
         Long usuarioId,
-        LocalDateTime fecha_reserva,
+        LocalDateTime fechaReserva,
         @DecimalMin(value = "0.0")
-        double costo_reserva,
+        double costoReserva,
         double penalidad
 
 ) {

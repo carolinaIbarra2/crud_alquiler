@@ -31,18 +31,18 @@ public class Reserva {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuarios")
     private Usuario usuario;
-
-    private LocalDateTime fecha_reserva;
-
-    private double costo_reserva;
+    @Column(name = "fecha_reserva")
+    private LocalDateTime fechaReserva;
+    @Column(name = "costo_reserva")
+    private double costoReserva;
 
     private double penalidad;
 
     public Reserva(ReservaInsertDTO reservaInsertDTO, EspacioFisico espacioFisico,Usuario usuario){
         this.espacioFisico = espacioFisico;
         this.usuario = usuario;
-        this.fecha_reserva = reservaInsertDTO.fecha_reserva();
-        this.costo_reserva = reservaInsertDTO.costo_reserva();
+        this.fechaReserva = reservaInsertDTO.fechaReserva();
+        this.costoReserva = reservaInsertDTO.costoReserva();
         this.penalidad = reservaInsertDTO.penalidad();
     }
 
@@ -54,11 +54,11 @@ public class Reserva {
         if (usuario != null){
             this.usuario = usuario;
         }
-        if (reservaUpdateDTO.fecha_reserva() != null){
-            this.fecha_reserva = reservaUpdateDTO.fecha_reserva();
+        if (reservaUpdateDTO.fechaReserva() != null){
+            this.fechaReserva = reservaUpdateDTO.fechaReserva();
         }
-        if (reservaUpdateDTO.costo_reserva() != 0){
-            this.costo_reserva = reservaUpdateDTO.costo_reserva();
+        if (reservaUpdateDTO.costoReserva() != 0){
+            this.costoReserva = reservaUpdateDTO.costoReserva();
         }
         if (reservaUpdateDTO.penalidad() != 0){
             this.penalidad = reservaUpdateDTO.penalidad();

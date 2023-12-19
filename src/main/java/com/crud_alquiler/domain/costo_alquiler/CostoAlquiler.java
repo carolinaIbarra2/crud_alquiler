@@ -28,30 +28,32 @@ public class CostoAlquiler {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_espacios_fisicos")
     private EspacioFisico espacioFisico;
-
-    private double costo_dia;
-    private LocalDateTime fecha_inicial;
-    private LocalDateTime fecha_final;
+    @Column(name = "costo_dia")
+    private double costoDia;
+    @Column(name = "fecha_inicial")
+    private LocalDateTime fechaInicial;
+    @Column(name = "fecha_final")
+    private LocalDateTime fechaFinal;
 
     public CostoAlquiler(CostoAlquilerInsertDTO costoAlquilerInsertDTO, EspacioFisico espacioFisico){
             this.espacioFisico = espacioFisico;
-            this.costo_dia = costoAlquilerInsertDTO.costo_dia();
-            this.fecha_inicial = costoAlquilerInsertDTO.fecha_inicial();
-            this.fecha_final = costoAlquilerInsertDTO.fecha_final();
+            this.costoDia = costoAlquilerInsertDTO.costoDia();
+            this.fechaInicial = costoAlquilerInsertDTO.fechaInicial();
+            this.fechaFinal = costoAlquilerInsertDTO.fechaFinal();
     }
 
     public void updateCostoAlquiler(CostoAlquilerUpdateDTO costoAlquilerUpdateDTO, EspacioFisico espacioFisico){
         if (espacioFisico != null){
             this.espacioFisico = espacioFisico;
         }
-        if (costoAlquilerUpdateDTO.costo_dia() != 0){
-            this.costo_dia = costoAlquilerUpdateDTO.costo_dia();
+        if (costoAlquilerUpdateDTO.costoDia() != 0){
+            this.costoDia = costoAlquilerUpdateDTO.costoDia();
         }
-        if (costoAlquilerUpdateDTO.fecha_inicial() != null){
-            this.fecha_inicial = costoAlquilerUpdateDTO.fecha_inicial();
+        if (costoAlquilerUpdateDTO.fechaInicial() != null){
+            this.fechaInicial = costoAlquilerUpdateDTO.fechaInicial();
         }
-        if (costoAlquilerUpdateDTO.fecha_final() != null){
-            this.fecha_final = costoAlquilerUpdateDTO.fecha_final();
+        if (costoAlquilerUpdateDTO.fechaFinal() != null){
+            this.fechaFinal = costoAlquilerUpdateDTO.fechaFinal();
         }
     }
 }

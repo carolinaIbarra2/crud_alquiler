@@ -9,10 +9,10 @@ public record CostoAlquilerUpdateDTO(
         Long id,
         Long espacioFisicoId,
         @NotNull
-        double costo_dia,
+        double costoDia,
         @NotNull
-        LocalDateTime fecha_inicial,
+        LocalDateTime fechaInicial,
         @NotNull
-        LocalDateTime fecha_final
+        LocalDateTime fechaFinal
 ) {
 }

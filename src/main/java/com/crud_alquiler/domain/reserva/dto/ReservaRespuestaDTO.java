@@ -12,8 +12,8 @@ public record ReservaRespuestaDTO(
         Long id,
         EspacioFisicoRespuestaDTO espacioFisico,
         UsuarioRespuestaDTO usuario,
-        LocalDateTime fecha_reserva,
-        double costo_reserva,
+        LocalDateTime fechaReserva,
+        double costoReserva,
         double penalidad
 
 ) {
@@ -22,8 +22,8 @@ public record ReservaRespuestaDTO(
                 reserva.getId(),
                 new EspacioFisicoRespuestaDTO(reserva.getEspacioFisico()),
                 new UsuarioRespuestaDTO(reserva.getUsuario()),
-                reserva.getFecha_reserva(),
-                reserva.getCosto_reserva(),
+                reserva.getFechaReserva(),
+                reserva.getCostoReserva(),
                 reserva.getPenalidad()
         );
     }

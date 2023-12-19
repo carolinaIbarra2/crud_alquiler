@@ -21,8 +21,10 @@ public class Usuario {
     Long id;
 
     String nombre;
-    String apellido_paterno;
-    String apellido_materno;
+    @Column(name ="apellido_paterno")
+    String apellidoPaterno;
+    @Column(name = "apellido_materno")
+    String apellidoMaterno;
     String cedula;
     String login;
     String contrasenia;
@@ -33,8 +35,8 @@ public class Usuario {
 
    public Usuario(UsuarioInsertDTO usuarioInsertDTO){
        this.nombre = usuarioInsertDTO.nombre();
-       this.apellido_paterno =usuarioInsertDTO.apellido_paterno();
-       this.apellido_materno = usuarioInsertDTO.apellido_materno();;
+       this.apellidoPaterno =usuarioInsertDTO.apellidoPaterno();
+       this.apellidoMaterno = usuarioInsertDTO.apellidoMaterno();;
        this.cedula = usuarioInsertDTO.cedula();
        this.login = usuarioInsertDTO.login();
        this.contrasenia = usuarioInsertDTO.contrasenia();;
@@ -45,11 +47,11 @@ public class Usuario {
        if (usuarioUpdateDTO.nombre() != null){
            this.nombre = usuarioUpdateDTO.nombre();
        }
-       if (usuarioUpdateDTO.apellido_paterno() != null){
-           this.apellido_paterno = usuarioUpdateDTO.apellido_paterno();
+       if (usuarioUpdateDTO.apellidoPaterno() != null){
+           this.apellidoPaterno = usuarioUpdateDTO.apellidoPaterno();
        }
-       if (usuarioUpdateDTO.apellido_materno() != null){
-           this.apellido_materno = usuarioUpdateDTO.apellido_materno();
+       if (usuarioUpdateDTO.apellidoMaterno() != null){
+           this.apellidoMaterno = usuarioUpdateDTO.apellidoMaterno();
        }
        if (usuarioUpdateDTO.cedula() != null){
            this.cedula = usuarioUpdateDTO.cedula();

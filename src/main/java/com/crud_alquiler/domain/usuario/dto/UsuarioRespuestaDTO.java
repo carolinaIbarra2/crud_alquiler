@@ -7,8 +7,8 @@ public record UsuarioRespuestaDTO(
 
         Long id,
         String nombre,
-        String apellido_paterno,
-        String apellido_materno,
+        String apellidoPaterno,
+        String apellidoMaterno,
         String cedula,
         String login,
         String contrasenia,
@@ -19,8 +19,8 @@ public record UsuarioRespuestaDTO(
     public UsuarioRespuestaDTO(Usuario usuario){
         this(usuario.getId(),
                 usuario.getNombre(),
-                usuario.getApellido_paterno(),
-                usuario.getApellido_materno(),
+                usuario.getApellidoPaterno(),
+                usuario.getApellidoMaterno(),
                 usuario.getCedula(),
                 usuario.getLogin(),
                 usuario.getContrasenia(),

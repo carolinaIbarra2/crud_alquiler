@@ -18,9 +18,9 @@ public record CostoAlquilerRespuestaDTO(
         this(
                 costoAlquiler.getId(),
                 new EspacioFisicoRespuestaDTO(costoAlquiler.getEspacioFisico()),
-                costoAlquiler.getCosto_dia(),
-                costoAlquiler.getFecha_inicial(),
-                costoAlquiler.getFecha_final()
+                costoAlquiler.getCostoDia(),
+                costoAlquiler.getFechaInicial(),
+                costoAlquiler.getFechaFinal()
         );
     }
 }

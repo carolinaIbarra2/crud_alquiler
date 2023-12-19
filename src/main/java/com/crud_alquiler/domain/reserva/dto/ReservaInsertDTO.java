@@ -13,10 +13,10 @@ public record ReservaInsertDTO(
         Long espacioFisicoId,
         @NotNull
         Long usuarioId,
-        LocalDateTime fecha_reserva,
+        LocalDateTime fechaReserva,
         @DecimalMin(value = "0.0")
         @NotNull
-        double costo_reserva,
+        double costoReserva,
 
         double penalidad
 
