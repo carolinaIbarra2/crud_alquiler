@@ -3,7 +3,7 @@ create table reservas(
     id_espacios_fisicos bigint not null,
     id_usuarios bigint not null,
     fecha_reserva DATETIME NOT NULL,
-    costo_reserva double,
+    costo_reserva double not null ,
     penalidad double,
 
     primary key (id),
