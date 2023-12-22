@@ -1,4 +1,4 @@
-package com.crud_alquiler.domain.tipo_espacio.entidades.dto;
+package com.crud_alquiler.domain.tipo_espacio.entity.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

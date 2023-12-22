@@ -1,7 +1,7 @@
 package com.crud_alquiler.domain.espacio_fisico.entidades.dto;
 
 import com.crud_alquiler.domain.espacio_fisico.entidades.EspacioFisico;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioRespuestaDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioRespuestaDTO;
 
 /**
  * Esta clase representa datos de respuesta relacionados con un espacio fisico

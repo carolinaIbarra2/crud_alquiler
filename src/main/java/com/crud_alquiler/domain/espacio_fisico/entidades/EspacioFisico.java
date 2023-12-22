@@ -2,7 +2,7 @@ package com.crud_alquiler.domain.espacio_fisico.entidades;
 
 import com.crud_alquiler.domain.espacio_fisico.entidades.dto.EspacioFisicoInsertDTO;
 import com.crud_alquiler.domain.espacio_fisico.entidades.dto.EspacioFisicoUpdateDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.TipoEspacio;
+import com.crud_alquiler.domain.tipo_espacio.entity.TipoEspacio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

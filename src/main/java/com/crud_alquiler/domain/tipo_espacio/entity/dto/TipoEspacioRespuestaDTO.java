@@ -1,6 +1,6 @@
-package com.crud_alquiler.domain.tipo_espacio.entidades.dto;
+package com.crud_alquiler.domain.tipo_espacio.entity.dto;
 
-import com.crud_alquiler.domain.tipo_espacio.entidades.TipoEspacio;
+import com.crud_alquiler.domain.tipo_espacio.entity.TipoEspacio;
 
 /**
  * Esta clase representa datos de respuesta relacionados con un tipo de espacio

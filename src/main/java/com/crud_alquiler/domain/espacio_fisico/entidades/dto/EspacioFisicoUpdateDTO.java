@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
  */
 public record EspacioFisicoUpdateDTO(
 
+        @NotNull
         Long id,
 
         Long tipoEspacioId,

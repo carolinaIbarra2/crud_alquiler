@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 /**
  * Interfaz que define operaciones para manipular usuario
  */
-public interface UsuarioServiceRepository {
+public interface UsuarioServiceInterface {
 
     /**
      * Obtiene un usuario por su identificador

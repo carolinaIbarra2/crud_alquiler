@@ -1,7 +1,7 @@
-package com.crud_alquiler.domain.tipo_espacio.entidades;
+package com.crud_alquiler.domain.tipo_espacio.entity;
 
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioUpdateDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioInsertDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioUpdateDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioInsertDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,9 +1,9 @@
 package com.crud_alquiler.infraestructura.controller;
 
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioInsertDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioRespuestaDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioUpdateDTO;
-import com.crud_alquiler.servicio.tipo_espacio.TipoEspacioServiceRepository;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioInsertDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioRespuestaDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioUpdateDTO;
+import com.crud_alquiler.servicio.tipo_espacio.TipoEspacioServiceInterface;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -21,14 +21,14 @@ import java.net.URI;
 @RequestMapping("/tipo_espacio")
 public class TipoEspacioController {
 
-    private final TipoEspacioServiceRepository tipoEspacioServiceRepository;
+    private final TipoEspacioServiceInterface tipoEspacioServiceInterface;
 
     /**
      * Constructor para inicializar el controlador con una implementación de TipoEspacioServiceRepository.
-     * @param tipoEspacioServiceRepository Implementación de la interfaz de servicio de tipoEspacio.
+     * @param tipoEspacioServiceInterface Implementación de la interfaz de servicio de tipoEspacio.
      */
-    public TipoEspacioController(TipoEspacioServiceRepository tipoEspacioServiceRepository) {
-        this.tipoEspacioServiceRepository = tipoEspacioServiceRepository;
+    public TipoEspacioController(TipoEspacioServiceInterface tipoEspacioServiceInterface) {
+        this.tipoEspacioServiceInterface = tipoEspacioServiceInterface;
     }
 
     /**
@@ -38,7 +38,7 @@ public class TipoEspacioController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<TipoEspacioRespuestaDTO> getTipoEspacio(@PathVariable Long id){
-        return ResponseEntity.ok(tipoEspacioServiceRepository.getTipoEspacio(id));
+        return ResponseEntity.ok(tipoEspacioServiceInterface.getTipoEspacio(id));
     }
 
     /**
@@ -49,7 +49,7 @@ public class TipoEspacioController {
     @GetMapping
     public ResponseEntity<Page<TipoEspacioRespuestaDTO>> getAllTipoEspacio(
             @PageableDefault(size = 5, sort = "tipoEspacio") Pageable pageable){
-        return ResponseEntity.ok(tipoEspacioServiceRepository.getAllTipoEspacio(pageable));
+        return ResponseEntity.ok(tipoEspacioServiceInterface.getAllTipoEspacio(pageable));
     }
 
     /**
@@ -64,7 +64,7 @@ public class TipoEspacioController {
             @Valid @RequestBody TipoEspacioInsertDTO tipoEspacioInsertDTO,
             UriComponentsBuilder uriComponentsBuilder){
 
-        TipoEspacioRespuestaDTO tipoEspacioRespuestaDTO = tipoEspacioServiceRepository.insertTipoEspacio(tipoEspacioInsertDTO);
+        TipoEspacioRespuestaDTO tipoEspacioRespuestaDTO = tipoEspacioServiceInterface.insertTipoEspacio(tipoEspacioInsertDTO);
         URI url = uriComponentsBuilder.path("/tipo_espacio/{id}").buildAndExpand(tipoEspacioRespuestaDTO.id()).toUri();
         return ResponseEntity.created(url).body(tipoEspacioRespuestaDTO);
     }
@@ -80,7 +80,7 @@ public class TipoEspacioController {
             @Valid @RequestBody TipoEspacioUpdateDTO tipoEspacioUpdateDTO
             ){
 
-        TipoEspacioRespuestaDTO respuestaDTO = tipoEspacioServiceRepository.updateTipoEspacio(tipoEspacioUpdateDTO);
+        TipoEspacioRespuestaDTO respuestaDTO = tipoEspacioServiceInterface.updateTipoEspacio(tipoEspacioUpdateDTO);
         return ResponseEntity.ok(respuestaDTO);
     }
 
@@ -92,7 +92,7 @@ public class TipoEspacioController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deleteTipoEspacio(@PathVariable Long id){
-        tipoEspacioServiceRepository.deleteTipoEspacio(id);
+        tipoEspacioServiceInterface.deleteTipoEspacio(id);
         return ResponseEntity.noContent().build();
     }
 

@@ -1,15 +1,15 @@
 package com.crud_alquiler.servicio.tipo_espacio;
 
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioInsertDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioRespuestaDTO;
-import com.crud_alquiler.domain.tipo_espacio.entidades.dto.TipoEspacioUpdateDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioInsertDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioRespuestaDTO;
+import com.crud_alquiler.domain.tipo_espacio.entity.dto.TipoEspacioUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
  * Interfaz que define operaciones para manipular tipo de espacio
  */
-public interface TipoEspacioServiceRepository {
+public interface TipoEspacioServiceInterface {
     /**
      * Obtiene un tipo de espacio por su identificador
      * @param id El identificador único del tipo de espacio a obtener.

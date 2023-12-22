@@ -5,7 +5,7 @@ import com.crud_alquiler.domain.espacio_fisico.entidades.dto.EspacioFisicoInsert
 import com.crud_alquiler.domain.espacio_fisico.entidades.dto.EspacioFisicoRespuestaDTO;
 import com.crud_alquiler.domain.espacio_fisico.entidades.dto.EspacioFisicoUpdateDTO;
 import com.crud_alquiler.domain.espacio_fisico.repository.EspacioFisicoRepository;
-import com.crud_alquiler.domain.tipo_espacio.entidades.TipoEspacio;
+import com.crud_alquiler.domain.tipo_espacio.entity.TipoEspacio;
 import com.crud_alquiler.domain.tipo_espacio.repository.TipoEspacioRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

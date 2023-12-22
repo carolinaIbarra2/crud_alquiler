@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  *usuarios.
  */
 @Service
-public class UsuarioService implements UsuarioServiceRepository {
+public class UsuarioService implements UsuarioServiceInterface {
 
     private final UsuarioRepository usuarioRepository;
 

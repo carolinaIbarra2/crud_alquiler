@@ -3,7 +3,7 @@ package com.crud_alquiler.infraestructura.controller;
 import com.crud_alquiler.domain.usuario.entidades.dto.UsuarioInsertDTO;
 import com.crud_alquiler.domain.usuario.entidades.dto.UsuarioRespuestaDTO;
 import com.crud_alquiler.domain.usuario.entidades.dto.UsuarioUpdateDTO;
-import com.crud_alquiler.servicio.usuario.UsuarioServiceRepository;
+import com.crud_alquiler.servicio.usuario.UsuarioServiceInterface;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -21,14 +21,14 @@ import java.net.URI;
 @RequestMapping("usuario")
 public class UsuarioController {
 
-    private final UsuarioServiceRepository usuarioServiceRepository;
+    private final UsuarioServiceInterface usuarioServiceInterface;
 
     /**
      * Constructor para inicializar el controlador con una implementación de UsuarioServiceRepository.
-     * @param usuarioServiceRepository Implementación de la interfaz de servicio de usuario.
+     * @param usuarioServiceInterface Implementación de la interfaz de servicio de usuario.
      */
-    public UsuarioController(UsuarioServiceRepository usuarioServiceRepository) {
-        this.usuarioServiceRepository = usuarioServiceRepository;
+    public UsuarioController(UsuarioServiceInterface usuarioServiceInterface) {
+        this.usuarioServiceInterface = usuarioServiceInterface;
     }
 
     /**
@@ -38,7 +38,7 @@ public class UsuarioController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioRespuestaDTO> getUsuario(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioServiceRepository.getUsuario(id));
+        return ResponseEntity.ok(usuarioServiceInterface.getUsuario(id));
     }
 
     /**
@@ -49,7 +49,7 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<Page<UsuarioRespuestaDTO>> getAllUsuario(
             @PageableDefault(size=5, sort = "id")Pageable pageable){
-        return ResponseEntity.ok(usuarioServiceRepository.findByUsuario(pageable));
+        return ResponseEntity.ok(usuarioServiceInterface.findByUsuario(pageable));
     }
 
     /**
@@ -62,7 +62,7 @@ public class UsuarioController {
     @Transactional
     public ResponseEntity<UsuarioRespuestaDTO> insertUsuario(
         @Valid @RequestBody UsuarioInsertDTO usuarioInsertDTO, UriComponentsBuilder uriComponentsBuilder){
-        UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioServiceRepository.insertUsuario(usuarioInsertDTO);
+        UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioServiceInterface.insertUsuario(usuarioInsertDTO);
         URI url = uriComponentsBuilder.path("/usuario/{id}").buildAndExpand(usuarioRespuestaDTO.id()).toUri();
         return ResponseEntity.created(url).body(usuarioRespuestaDTO);
     }
@@ -77,7 +77,7 @@ public class UsuarioController {
     public ResponseEntity<UsuarioRespuestaDTO> updateUsuario(
             @Valid @RequestBody UsuarioUpdateDTO usuarioUpdateDTO
             ){
-        UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioServiceRepository.updateUsuario(usuarioUpdateDTO);
+        UsuarioRespuestaDTO usuarioRespuestaDTO = usuarioServiceInterface.updateUsuario(usuarioUpdateDTO);
         return ResponseEntity.ok(usuarioRespuestaDTO);
     }
 
@@ -89,7 +89,7 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> delectUsuario(@PathVariable Long id){
-        usuarioServiceRepository.delectUsuario(id);
+        usuarioServiceInterface.delectUsuario(id);
         return ResponseEntity.noContent().build();
     }
 
