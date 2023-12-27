@@ -34,7 +34,7 @@ public class Usuario {
 
    @Enumerated(EnumType.STRING)
     @Column(name = "rol")
-    private Rol rol;
+    Rol rol;
 
     /**
      * Constructor que inicializa un objeto Usuario a partir de un objeto UsuarioInsertDTO
@@ -49,6 +49,7 @@ public class Usuario {
        this.contrasenia = usuarioInsertDTO.contrasenia();;
        this.rol = usuarioInsertDTO.rol();
    }
+
 
 
     /**

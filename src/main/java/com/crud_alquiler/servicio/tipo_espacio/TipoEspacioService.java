@@ -53,6 +53,7 @@ public class TipoEspacioService implements TipoEspacioServiceInterface {
 
     @Override
     public TipoEspacioRespuestaDTO updateTipoEspacio(TipoEspacioUpdateDTO tipoEspacioUpdateDTO){
+        tipoEspacioValidationInterface.forEach(v->v.validacionUpdate(tipoEspacioUpdateDTO));
         TipoEspacio tipoEspacio = tipoEspacioRepository.getReferenceById(tipoEspacioUpdateDTO.id());
         tipoEspacio.updateTipoEspacio(tipoEspacioUpdateDTO);
         return new TipoEspacioRespuestaDTO(tipoEspacio);

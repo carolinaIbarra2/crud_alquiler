@@ -6,6 +6,6 @@ CREATE TABLE usuarios(
         cedula varchar(15) not null unique,
         login varchar(50) not null unique,
         contrasenia varchar(50) not null,
-        rol varchar(13) not null,
+        rol ENUM('ADMINISTRADOR','USUARIO') not null,
         primary key (id)
 );

@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -72,6 +73,19 @@ public class ErrorHandler {
     public ResponseEntity errorHandlerValidacionesIntegridad(Exception e) {
         // Captura la excepción ValidacionIntegridad y devuelve una respuesta HTTP 400 Bad Request con el mensaje de error.
         return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+
+
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity tryError400(HttpMessageNotReadableException e) {
+        // Obtiene los errores de validación de la excepción capturada y los convierte en objetos ValidationErrorData.
+        var errors = e.getMessage();
+
+        // Devuelve una respuesta HTTP 400 Bad Request con los errores de validación.
+        return ResponseEntity.badRequest().body(errors);
     }
 
 }

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 /**
  *Interfaz que define operaciones para manipular costos de alquiler
  */
+
 public interface CostoAlquilerServiceInterface {
 
     /**

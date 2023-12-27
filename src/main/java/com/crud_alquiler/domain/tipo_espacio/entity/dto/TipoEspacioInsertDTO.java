@@ -1,6 +1,7 @@
 package com.crud_alquiler.domain.tipo_espacio.entity.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 /**
@@ -11,6 +12,7 @@ public record TipoEspacioInsertDTO(
 
         @NotBlank
         @Size(min = 5, max = 100)
+        @Pattern(regexp = "[a-zA-Z]+", message = "Este campo solo acepta letras")
         String tipoEspacio
 
 ) {
