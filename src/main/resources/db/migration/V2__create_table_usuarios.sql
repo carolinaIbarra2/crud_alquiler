@@ -5,7 +5,7 @@ CREATE TABLE usuarios(
         apellido_materno varchar(50) not null,
         cedula varchar(15) not null unique,
         login varchar(50) not null unique,
-        contrasenia varchar(50) not null,
+        contrasenia varchar(100) not null,
         rol ENUM('ADMINISTRADOR','USUARIO') not null,
         primary key (id)
 );

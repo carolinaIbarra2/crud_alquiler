@@ -5,6 +5,7 @@ import com.crud_alquiler.domain.usuario.entidades.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -119,7 +120,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     """)
     Boolean findDuplicateLoginCedulaToInsert(String login, String cedula, Long usuarioID);
 
-
+    UserDetails findByLogin(String login);
 
 }
 

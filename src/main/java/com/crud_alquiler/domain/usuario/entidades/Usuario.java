@@ -7,6 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Representa la entidad Usuario que almacena la información relacionada con el usuario.
@@ -17,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +53,7 @@ public class Usuario {
        this.apellidoMaterno = usuarioInsertDTO.apellidoMaterno();;
        this.cedula = usuarioInsertDTO.cedula();
        this.login = usuarioInsertDTO.login();
-       this.contrasenia = usuarioInsertDTO.contrasenia();;
+       this.contrasenia = hashPassword(usuarioInsertDTO.contrasenia());;
        this.rol = usuarioInsertDTO.rol();
    }
 
@@ -80,6 +87,44 @@ public class Usuario {
            this.rol = usuarioUpdateDTO.rol();
        }
     }
-   
 
+    private static String hashPassword(String password_plaintext) {
+        String salt = BCrypt.gensalt(10);
+        return BCrypt.hashpw(password_plaintext, salt);
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return contrasenia;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

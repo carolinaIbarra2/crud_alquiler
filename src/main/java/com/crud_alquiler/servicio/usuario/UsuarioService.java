@@ -8,6 +8,9 @@ import com.crud_alquiler.domain.usuario.repository.UsuarioRepository;
 import com.crud_alquiler.domain.usuario.validation.UsuarioValidationInterface;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +20,7 @@ import java.util.List;
  *usuarios.
  */
 @Service
-public class UsuarioService implements UsuarioServiceInterface {
+public class UsuarioService implements UsuarioServiceInterface, UserDetailsService {
 
     private final UsuarioRepository usuarioRepository;
     private final List<UsuarioValidationInterface> usuarioValidationInterface;
@@ -68,7 +71,13 @@ public class UsuarioService implements UsuarioServiceInterface {
         usuarioRepository.deleteById(usuario.getId());
     }
 
+    @Override
+    public UserDetails findByLogin(String login) {
+        return usuarioRepository.findByLogin(login);
+    }
 
-
-
+    @Override
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        return usuarioRepository.findByLogin(login);
+    }
 }

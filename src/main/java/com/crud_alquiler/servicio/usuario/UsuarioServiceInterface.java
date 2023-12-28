@@ -5,11 +5,12 @@ import com.crud_alquiler.domain.usuario.entidades.dto.UsuarioRespuestaDTO;
 import com.crud_alquiler.domain.usuario.entidades.dto.UsuarioUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Interfaz que define operaciones para manipular usuario
  */
-public interface UsuarioServiceInterface {
+public interface UsuarioServiceInterface{
 
     /**
      * Obtiene un usuario por su identificador
@@ -44,4 +45,8 @@ public interface UsuarioServiceInterface {
      * @param id El identificador único del usuario a eliminar.
      */
     void delectUsuario(Long id);
+
+    UserDetails findByLogin(String login);
+
+    UserDetails loadUserByUsername(String login);
 }
