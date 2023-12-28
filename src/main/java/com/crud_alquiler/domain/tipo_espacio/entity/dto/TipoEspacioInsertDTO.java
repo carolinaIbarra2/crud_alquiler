@@ -12,7 +12,7 @@ public record TipoEspacioInsertDTO(
 
         @NotBlank
         @Size(min = 5, max = 100)
-        @Pattern(regexp = "[a-zA-Z]+", message = "Este campo solo acepta letras")
+        @Pattern(regexp = "^[a-zA-Z ]+$", message = "Este campo solo acepta letras")
         String tipoEspacio
 
 ) {

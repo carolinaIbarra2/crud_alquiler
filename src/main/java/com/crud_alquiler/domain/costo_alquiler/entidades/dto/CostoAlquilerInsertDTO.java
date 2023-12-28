@@ -1,8 +1,7 @@
 package com.crud_alquiler.domain.costo_alquiler.entidades.dto;
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -18,8 +17,12 @@ public record CostoAlquilerInsertDTO(
         @NotNull
         double costoDia,
         @NotNull(message = "Debe ingresar una fecha inicial")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        @FutureOrPresent(message = "La fecha debe ser igual o mayor a la fecha actual")
         LocalDateTime fechaInicial,
-        @NotNull
+        @NotNull(message = "Debe ingresar una fecha inicial")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        @FutureOrPresent(message = "La fecha debe ser igual o mayor a la fecha actual")
         LocalDateTime fechaFinal
 ) {
 }

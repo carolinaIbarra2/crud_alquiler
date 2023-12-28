@@ -9,6 +9,7 @@ import com.crud_alquiler.domain.reserva.entidades.Reserva;
 import com.crud_alquiler.domain.reserva.repository.ReservaRepository;
 import com.crud_alquiler.domain.usuario.entidades.Usuario;
 import com.crud_alquiler.domain.usuario.repository.UsuarioRepository;
+import com.crud_alquiler.infraestructura.errors.IntegrityValidation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,8 +51,14 @@ public class ReservaService implements ReservaServiceInterface {
 
     @Override
     public ReservaRespuestaDTO insertReserva(ReservaInsertDTO reservaInsertDTO){
-        EspacioFisico espacioFisico = espacioFisicoRepository.getReferenceById(reservaInsertDTO.espacioFisicoId());
-        Usuario usuario = usuarioRepository.getReferenceById(reservaInsertDTO.usuarioId());
+        // Verificar si existen los ID de las llaves foráneas
+        EspacioFisico espacioFisico = espacioFisicoRepository.findById(reservaInsertDTO.espacioFisicoId())
+                .orElseThrow(() -> new IntegrityValidation("El espacio físico con el ID proporcionado no existe"));
+
+        Usuario usuario = usuarioRepository.findById(reservaInsertDTO.usuarioId())
+                .orElseThrow(() -> new IntegrityValidation("El usuario con el ID proporcionado no existe"));
+
+        // Si el espacio físico y el existe, se procede con la creación de la reserva
         Reserva reserva = reservaRepository.save(new Reserva(reservaInsertDTO,espacioFisico,usuario));
         return new ReservaRespuestaDTO(reserva);
     }

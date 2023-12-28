@@ -1,9 +1,8 @@
 package com.crud_alquiler.domain.reserva.entidades.dto;
 
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.time.LocalDateTime;
@@ -18,10 +17,17 @@ public record ReservaInsertDTO(
         Long espacioFisicoId,
         @NotNull
         Long usuarioId,
+
+        @NotNull
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        @FutureOrPresent(message = "La fecha debe ser igual o mayor a la fecha actual")
         LocalDateTime fechaReserva,
 
-        @NotBlank
+        @NotNull
+        @PositiveOrZero
         double costoReserva,
+
+        @PositiveOrZero
         double penalidad
 
 ) {
